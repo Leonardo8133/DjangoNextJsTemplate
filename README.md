@@ -1,33 +1,63 @@
-# Django with Next.js and Docker Compose
+# Django/Nextjs/Docker-compose Template Repository
 
-This is a template repository that demonstrates how to use Django as the backend for a Next.js frontend application using Docker Compose.
+This is a template repository for creating a web application using Django as the backend framework, Next.js as the frontend framework, and Docker Compose for containerization. This template is designed to help developers get started quickly with a production-ready application setup.
 
-## Getting Started
+## Built With
 
-To get started with this project, follow these steps:
-
-1. Clone the repository: `git clone https://github.com/yourusername/djangoxnextjs`
-2. Install dependencies: Run `npm install` or `pip install -r requirements.txt`.
-3. Build the Docker images: Run `docker-compose build`.
-4. Run the containers: Run `docker-compose up --build`. This will start both the Django and Next.js containers.
-5. Access the Next.js app: Open your browser and go to <http://localhost:3000>. You should see the default "Hello World" page.
-6. Access the Django admin interface: Go to <http://localhost:8000/admin/>. Use the username and password specified in the `settings.py` file (default: `admin / Admin123`).
-
-## Technologies Used
-
-* [Django](https://www.django-rest-framework.org/) - A Python web framework for building APIs.
-* [Next.js](https://nextjs.org/) - A JavaScript framework for building server-rendered React applications.
-* [React](https://reactjs.org/) - A JavaScript library for building user interfaces.
-* [Docker](https://www.docker.com/) - A containerization platform for developing, shipping, and running applications.
-* [Compose](https://docs.docker.com/compose/) - A tool for defining and running multi-container Docker applications.
+- [Django](https://www.djangoproject.com/) - Backend web framework
+- [Next.js](https://nextjs.org/) - Frontend web framework
+- [Docker](https://www.docker.com/) - Containerization tool
+- [Docker Compose](https://docs.docker.com/compose/) - Docker container orchestrator
 
 ## Features
 
-* A simple CRUD API built with Django Rest Framework.
-* A Next.js frontend application that consumes the API and displays data.
-* Authentication and authorization using Django's built-in authentication system.
-* Docker Compose for easy deployment and management of the application stack.
+- [JWT Authentication] - API Authentication using JWT Token.
+- [Ready to Deploy] - This application is ready to deploy using Docker.
+- [Minimal Backend Tests] - The test folders are set, with some minimal tests implemented.
+- [Backgound Worker] - Our application uses Celery to run background tasks.
 
-## Conclusion
+## Getting Started
 
-This template provides a starting point for building full-stack web applications with Django, Next.js, and Docker Compose. It can be used as a basis for more complex projects by adding additional features and functionality.
+1. Clone the repository:
+
+```bash
+git clone [https://github.com/Leonardo8133/DjangoNextJsTemplate.git]
+```
+
+2. Navigate to the project directory:
+
+```bash
+cd your-repository
+```
+
+3. Run Docker Compose:
+
+```bash
+docker-compose up --build
+```
+
+4. After successfully starting up the Docker container, go to `http://localhost:8000` to check if the Django backend is running. You should see the default Django welcome screen.
+
+5. Go to `http://localhost:3000` to check if the Next.js frontend is running. You should see the default Next.js page.
+
+## Project Structure
+
+```
+.
+├── backend/              # Django backend app
+│   ├── project/          # Django project
+│   └── app/              # Django app
+│   ├── Dockerfile        # Django Dockerfile
+│   └── requirements.txt  # Python dependencies
+├── frontend/             # Next.js frontend app
+│   ├── pages/            # Next.js pages
+│   └── components/       # Next.js components
+│   ├── Dockerfile        # Next.js Dockerfile
+│   └── package.json      # Node.js dependencies
+├── docker-compose.yml    # Docker Compose configuration file
+└── README.md             # Project README
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
