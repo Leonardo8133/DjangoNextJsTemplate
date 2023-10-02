@@ -14,7 +14,7 @@ This is a template repository for creating a web application using Django as the
 - [JWT Authentication] - API Authentication using JWT Token.
 - [Ready to Deploy] - This application is ready to deploy using Docker.
 - [Minimal Backend Tests] - The test folders are set, with some minimal tests implemented.
-- [Backgound Worker] - Our application uses Celery to run background tasks.
+- [Background Worker] - Our application uses Celery to run background tasks.
 
 ## Getting Started
 
