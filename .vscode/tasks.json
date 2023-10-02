@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Django Docker Test",
+            "type": "shell",
+            "command": "docker compose run --rm back python manage.py test --settings=baseapp.settings.test",
+            "problemMatcher": []
+        },
+        {
+            "label": "Docker compose up",
+            "type": "shell",
+            "command": "docker compose up",
+            "problemMatcher": []
+        }
+    ]
+}

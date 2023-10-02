@@ -1,0 +1,43 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.s-25 {
+  width: 25%;
+  display: block;
+}
+
+.s-50 {
+  width: 50%;
+  display: block;
+}
+
+.s-75 {
+  width: 75%;
+  display: block;
+}
+
+.s-100 {
+  width: 100%;
+  display: block;
+}
+
+.center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
