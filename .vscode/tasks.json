@@ -1,17 +1,44 @@
 {
     "version": "2.0.0",
     "tasks": [
+        // Write down Make commands (build, run, down, migrate)
         {
-            "label": "Django Docker Test",
+            "label": "build",
             "type": "shell",
-            "command": "docker compose run --rm back python manage.py test --settings=baseapp.settings.test",
-            "problemMatcher": []
+            "command": "make build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         },
         {
-            "label": "Docker compose up",
+            "label": "run",
             "type": "shell",
-            "command": "docker compose up",
-            "problemMatcher": []
+            "command": "make run",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "down",
+            "type": "shell",
+            "command": "make down",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "migrate",
+            "type": "shell",
+            "command": "make migrate",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
+    
+
     ]
 }

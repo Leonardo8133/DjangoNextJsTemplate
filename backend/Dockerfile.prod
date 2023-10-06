@@ -1,0 +1,42 @@
+# Build stage
+FROM python:3.11-slim AS build
+
+ENV PYTHONUNBUFFERED 1
+ENV DEBUG=0
+
+# Configure ssh to use AES encryption (optional)
+RUN mkdir -p /root/.ssh && \
+    echo "Host *" > /root/.ssh/config && \
+    echo "    Ciphers aes128-ctr,aes192-ctr,aes256-ctr" >> /root/.ssh/config && \
+    chmod 600 /root/.ssh/config
+
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends gcc python3-dev musl-dev \
+  && pip install --upgrade pip \
+  && pip install --no-cache-dir -r requirements.txt \
+  && apt-get remove -y gcc python3-dev musl-dev \
+  && apt-get autoremove -y \
+  && rm -rf /var/lib/apt/lists/*
+
+COPY . .
+
+# Production stage
+FROM python:3.11-slim
+
+ENV PYTHONUNBUFFERED 1
+ENV DEBUG=0
+
+# Create a non-root user
+RUN adduser --disabled-password --gecos '' appuser
+
+WORKDIR /app
+
+COPY --from=build --chown=appuser:appuser /app .
+
+USER appuser
+
+CMD ["gunicorn", "myproject.wsgi:application", "--bind", "0.0.0.0:8000"]

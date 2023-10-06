@@ -9,12 +9,12 @@ services:
       - POSTGRES_PASSWORD=postgres
   back:
     build: ./backend 
-    env_file: /backend/.env
-    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    env_file: ./backend/.env
+    command: sh -c "python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./backend:/backend
     ports:
-      - "8001:8000"
+      - "8000:8000"
     depends_on:
       - db
   front:
@@ -25,5 +25,5 @@ services:
       - /front/node_modules
       - /front/.next
     ports:
-      - "3001:3000"
+      - "3000:3000"
 

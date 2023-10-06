@@ -1,0 +1,42 @@
+version: '3.9'
+  
+services:
+  # Database - PostgreSQL
+  # You should use an extarnal DB in production (AWS RDS, Google Cloud SQL, etc.)
+  db:
+    image: postgres:13
+    restart: always
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - db_data:/var/lib/postgresql/data/
+  # Backend - Django
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    restart: always
+    env_file:
+      - .env.prod
+    command: gunicorn myproject.wsgi:application --bind 0.0.0.0:${PORT}
+    volumes:
+      - static_volume:/home/app/web/staticfiles
+      - media_volume:/home/app/web/mediafiles
+  # Frontend - Next.js
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - static_volume:/home/app/web/staticfiles
+      - media_volume:/home/app/web/mediafiles
+
+volumes:
+  db_data:
+  static_volume:
+  media_volume:
