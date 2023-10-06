@@ -32,15 +32,19 @@ ALLOWED_HOSTS = ["host.docker.internal", "127.0.0.1"]
 # Application definition
 
 INSTALLED_APPS = [
+    # Django Apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Third-Party Apps
     'django_filters',
+    'drf_yasg',
     'rest_framework',
     'rest_framework.authtoken',
+    # Project Apps
     'user',
 ]
 

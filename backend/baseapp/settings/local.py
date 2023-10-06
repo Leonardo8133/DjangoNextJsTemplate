@@ -1,5 +1,6 @@
 from .base import *
 
+ALLOWED_HOSTS = ['*']
 
 REST_FRAMEWORK.update({
     'DEFAULT_PARSER_CLASSES': (
